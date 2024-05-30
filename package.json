@@ -1,0 +1,24 @@
+{
+  "name": "2048",
+  "version": "1.0.0",
+  "description": "2048 game clone",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rinnegard/2048.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rinnegard/2048/issues"
+  },
+  "homepage": "https://github.com/rinnegard/2048#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.3.0",
+    "eslint": "^9.3.0",
+    "globals": "^15.3.0"
+  }
+}
