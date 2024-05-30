@@ -27,22 +27,25 @@ window.addEventListener("keydown", (event) => {
 })
 
 function moveTiles(direction) {
-    let min = 10;
-    let max = 376;
+    let min = 0;
+    let max = 3;
+
 
     tiles.forEach((tile) => {
-        console.log("Left:", tile.style);
-        console.log("Top:", tile.offsetTop);
 
-        if (direction === "right" && tile.offsetLeft < max) {
-            //  tile.style.left = `${tile.offsetLeft + 112}px`; //TODO Remove hardcode
-            tile.style.setProperty("--x", 2);
-        } else if (direction === "left" && tile.offsetLeft > min) {
-            tile.style.left = `${tile.offsetLeft - 132}px`; //TODO Remove hardcode
-        } else if (direction === "down"  && tile.offsetTop < max) {
-            tile.style.top = `${tile.offsetTop + 112}px`; //TODO Remove hardcode
-        } else if (direction === "up" && tile.offsetTop > min) {
-            tile.style.top = `${tile.offsetTop - 132}px`; //TODO Remove hardcode
+        let x = Number(tile.style.getPropertyValue("--x"));
+        let y = Number(tile.style.getPropertyValue("--y"));
+        console.log("x:", x);
+        console.log("y:", y);
+
+        if (direction === "right" && x < max) {
+            tile.style.setProperty("--x", x + 1);
+        } else if (direction === "left" && x > min) {
+            tile.style.setProperty("--x", x - 1);
+        } else if (direction === "down"  && y < max) {
+            tile.style.setProperty("--y", y + 1);
+        } else if (direction === "up" && y > min) {
+            tile.style.setProperty("--y", y - 1);
         }
     })
 }

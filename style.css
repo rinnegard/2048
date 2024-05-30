@@ -32,8 +32,8 @@ h1 {
 
 .tile {
     --tile-width: calc((var(--board-size) - var(--gap) * 5) / 4);
-    --y: 1;
-    --x: 1;
+    --y: 0;
+    --x: 0;
     margin: var(--gap);
     position: absolute;
     width: var(--tile-width);
