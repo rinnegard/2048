@@ -1,3 +1,37 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
 h1 {
     color: darkblue;
+}
+
+.gameBoard {
+    font-size: 4rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+    width: 500px;
+    height: 500px;
+    background-color: rgb(48, 48, 48);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.square {
+    background-color: grey;
+    width: 1fr;
+    height: 1fr;
+    border-radius: 5px;
+}
+
+.tile {
+    position: absolute;
+    width: calc(450px/4);
+    height: calc(450px/4);
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
