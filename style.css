@@ -7,14 +7,17 @@ h1 {
 }
 
 .gameBoard {
+    --gap: 10px;
+    --grid-size: 1fr;
+    --board-size: 500px;
     position: relative;
     font-size: 4rem;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, var(--grid-size));
+    grid-template-rows: repeat(4, var(--grid-size));
     gap: 10px;
-    width: 500px;
-    height: 500px;
+    width: var(--board-size);
+    height: var(--board-size);
     background-color: rgb(48, 48, 48);
     padding: 10px;
     border-radius: 5px;
@@ -28,13 +31,18 @@ h1 {
 }
 
 .tile {
-    margin: 10px;
+    --tile-width: calc((var(--board-size) - var(--gap) * 5) / 4);
+    --y: 1;
+    --x: 1;
+    margin: var(--gap);
     position: absolute;
-    width: calc(450px/4);
-    height: calc(450px/4);
+    width: var(--tile-width);
+    height: var(--tile-width);
     background-color: aquamarine;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
+    top: calc((var(--tile-width) + var(--gap)) * var(--y));
+    left: calc((var(--tile-width) + var(--gap)) * var(--x));
 }

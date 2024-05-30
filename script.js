@@ -31,10 +31,12 @@ function moveTiles(direction) {
     let max = 376;
 
     tiles.forEach((tile) => {
-        console.log("Left:", tile.offsetLeft);
+        console.log("Left:", tile.style);
         console.log("Top:", tile.offsetTop);
+
         if (direction === "right" && tile.offsetLeft < max) {
-             tile.style.left = `${tile.offsetLeft + 112}px`; //TODO Remove hardcode
+            //  tile.style.left = `${tile.offsetLeft + 112}px`; //TODO Remove hardcode
+            tile.style.setProperty("--x", 2);
         } else if (direction === "left" && tile.offsetLeft > min) {
             tile.style.left = `${tile.offsetLeft - 132}px`; //TODO Remove hardcode
         } else if (direction === "down"  && tile.offsetTop < max) {
