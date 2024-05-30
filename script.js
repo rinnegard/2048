@@ -7,19 +7,19 @@ window.addEventListener("keydown", (event) => {
     switch (event.key) {
         case "ArrowRight":
         case "d":
-            moveTiles();
+            moveTiles("right");
             break;
         case "ArrowLeft":
         case "a":
-            moveTiles();
+            moveTiles("left");
             break;
         case "ArrowDown":
         case "s":
-            moveTiles();
+            moveTiles("down");
             break;
         case "ArrowUp":
         case "w":
-            moveTiles();
+            moveTiles("up");
             break;
         default:
             break;
@@ -28,6 +28,16 @@ window.addEventListener("keydown", (event) => {
 
 function moveTiles(direction) {
     tiles.forEach((tile) => {
-        tile.style.top = "200px";
+        console.log("Left:", tile.offsetLeft);
+        console.log("Top:", tile.offsetTop);
+        if (direction === "right") {
+             tile.style.left = `${tile.offsetLeft + 112}px`; //TODO Remove hardcode
+        } else if (direction === "left") {
+            tile.style.left = `${tile.offsetLeft - 132}px`; //TODO Remove hardcode
+        } else if (direction === "down") {
+            tile.style.top = `${tile.offsetTop + 112}px`; //TODO Remove hardcode
+        } else if (direction === "up") {
+            tile.style.top = `${tile.offsetTop - 132}px`; //TODO Remove hardcode
+        }
     })
 }
