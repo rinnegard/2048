@@ -27,16 +27,19 @@ window.addEventListener("keydown", (event) => {
 })
 
 function moveTiles(direction) {
+    let min = 10;
+    let max = 376;
+
     tiles.forEach((tile) => {
         console.log("Left:", tile.offsetLeft);
         console.log("Top:", tile.offsetTop);
-        if (direction === "right") {
+        if (direction === "right" && tile.offsetLeft < max) {
              tile.style.left = `${tile.offsetLeft + 112}px`; //TODO Remove hardcode
-        } else if (direction === "left") {
+        } else if (direction === "left" && tile.offsetLeft > min) {
             tile.style.left = `${tile.offsetLeft - 132}px`; //TODO Remove hardcode
-        } else if (direction === "down") {
+        } else if (direction === "down"  && tile.offsetTop < max) {
             tile.style.top = `${tile.offsetTop + 112}px`; //TODO Remove hardcode
-        } else if (direction === "up") {
+        } else if (direction === "up" && tile.offsetTop > min) {
             tile.style.top = `${tile.offsetTop - 132}px`; //TODO Remove hardcode
         }
     })
