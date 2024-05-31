@@ -45,13 +45,19 @@ export default class GameBoard {
     }
 
     moveRight() {
-        return this.moveTiles(this.cellsByColumn().toReversed())
+        return this.moveTiles(this.cellsByRow().toReversed())
+    }
+
+    
+    moveLeft() {
+        return this.moveTiles(this.cellsByRow())
+    
     }
 
     moveTiles(cells) {
         cells.map((row) => {
-            for (let index = 0; index < row.length; index++) {
-                
+            for (let i = 0; i < row.length; i++) {
+                console.log(row[i]);
             }
         })
     }

@@ -9,19 +9,19 @@ window.addEventListener("keydown", (event) => {
     switch (event.key) {
         case "ArrowRight":
         case "d":
-            gameBoard.moveRight("right");
+            gameBoard.moveRight();
             break;
         case "ArrowLeft":
         case "a":
-            gameBoard.moveLeft("left");
+            gameBoard.moveLeft();
             break;
         case "ArrowDown":
         case "s":
-            gameBoard.moveDown("down");
+            gameBoard.moveDown();
             break;
         case "ArrowUp":
         case "w":
-            gameBoard.moveUp("up");
+            gameBoard.moveUp();
             break;
         default:
             break;
