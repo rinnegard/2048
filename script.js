@@ -1,23 +1,44 @@
+import GameBoard from "./GameBoard.js";
+
 console.log("Loaded");
 
 class Tile {
-    x;
-    y;
+    #x;
+    #y;
+    value;
     element;
 
-    constructor() {
+    constructor(boardElement) {
         let newTile = document.createElement("div")
         newTile.classList.toggle("tile");
 
         this.element = newTile;
-        
-        this.x = Math.floor(Math.random() * 4);
-        this.y = Math.floor(Math.random() * 4);
+        this.value = 2;
 
-        newTile.textContent = "2";
-        
+        newTile.textContent = this.value;
+
         newTile.style.setProperty("--x", this.x)
         newTile.style.setProperty("--y", this.y)
+
+        boardElement.appendChild(newTile)
+    }
+
+    set x(pos) {
+        this.element.style.setProperty("--x", pos);
+        this.#x = pos;
+    }
+
+    set y(pos) {
+        this.element.style.setProperty("--y", pos);
+        this.#y = pos;
+    }
+
+    get x() {
+        return this.#x;
+    }
+    
+    get y() {
+        return this.#y;
     }
 }
 
@@ -51,29 +72,38 @@ function moveTiles(direction) {
 
     tiles.forEach((tile) => {
 
-        let x = Number(tile.style.getPropertyValue("--x"));
-        let y = Number(tile.style.getPropertyValue("--y"));
+        let x = Number(tile.element.style.getPropertyValue("--x"));
+        let y = Number(tile.element.style.getPropertyValue("--y"));
+        console.log(tile.x);
         console.log("x:", x);
         console.log("y:", y);
 
         if (direction === "right" && x < max) {
-            tile.style.setProperty("--x", x + 1);
+            tile.x = tile.x + 1;
         } else if (direction === "left" && x > min) {
-            tile.style.setProperty("--x", x - 1);
+            tile.x = tile.x - 1;
         } else if (direction === "down"  && y < max) {
-            tile.style.setProperty("--y", y + 1);
+            tile.y = tile.y + 1;
         } else if (direction === "up" && y > min) {
-            tile.style.setProperty("--y", y - 1);
+            tile.y = tile.y - 1;
         }
     })
 }
 
-let newTile = new Tile();
+let boardElement = document.querySelector(".gameBoard");
+let gameBoard = new GameBoard(boardElement);
 
-let gameBoard = document.querySelector(".gameBoard");
-gameBoard.appendChild(newTile.element)
+gameBoard.randomEmptyCell().tile = new Tile(boardElement);
 
 
-const tiles = document.querySelectorAll(".tile");
-console.log(tiles);
+
+// const tiles = [];
+// for (let index = 0; index < 2; index++) {
+//     tiles.push(new Tile())
+// }
+
+// tiles.forEach((tile) => {
+//     boardElement.appendChild(tile.element)
+// })
+
 

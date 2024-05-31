@@ -23,7 +23,7 @@ h1 {
     border-radius: 5px;
 }
 
-.square {
+.cell {
     background-color: grey;
     width: 1fr;
     height: 1fr;
