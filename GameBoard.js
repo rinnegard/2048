@@ -13,10 +13,39 @@ export default class GameBoard {
         })
     }
 
+    fullCells() {
+        return this.#cells.filter((cell) => {
+            return cell.tile != undefined;
+        })
+    }
+
     randomEmptyCell() {
         let emptyCells = this.emptyCells();
         let rand = Math.floor(Math.random() * emptyCells.length);
         return emptyCells[rand];
+    }
+
+    moveTiles(direction) {
+        let min = 0;
+        let max = 3;
+
+        let fullCells = this.fullCells();
+    
+    
+        fullCells.forEach((cell) => {
+            let tile = cell.tile
+
+    
+            if (direction === "right" && tile.x < max) {
+                tile.x = tile.x + 1;
+            } else if (direction === "left" && tile.x > min) {
+                tile.x = tile.x - 1;
+            } else if (direction === "down"  && tile.y < max) {
+                tile.y = tile.y + 1;
+            } else if (direction === "up" && tile.y > min) {
+                tile.y = tile.y - 1;
+            }
+        })
     }
 }
 
