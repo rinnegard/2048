@@ -13,12 +13,9 @@ class Tile {
         newTile.classList.toggle("tile");
 
         this.element = newTile;
-        this.value = 2;
+        this.value = Math.random() > 0.25 ? 2 : 4;
 
         newTile.textContent = this.value;
-
-        newTile.style.setProperty("--x", this.x)
-        newTile.style.setProperty("--y", this.y)
 
         boardElement.appendChild(newTile)
     }
