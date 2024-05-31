@@ -7,9 +7,16 @@ export default class GameBoard {
         console.log(this.#cells);
     }
 
+    emptyCells() {
+        return this.#cells.filter((cell) => {
+            return cell.tile == undefined;
+        })
+    }
+
     randomEmptyCell() {
-        let rand = Math.floor(Math.random() * 16);
-        return this.#cells[rand];
+        let emptyCells = this.emptyCells();
+        let rand = Math.floor(Math.random() * emptyCells.length);
+        return emptyCells[rand];
     }
 }
 
@@ -29,6 +36,10 @@ class Cell {
         this.#tile = tile
         this.#tile.x = this.#x
         this.#tile.y = this.#y
+    }
+
+    get tile() {
+        return this.#tile;
     }
 }
 

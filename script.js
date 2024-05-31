@@ -93,7 +93,11 @@ function moveTiles(direction) {
 let boardElement = document.querySelector(".gameBoard");
 let gameBoard = new GameBoard(boardElement);
 
+
+
 gameBoard.randomEmptyCell().tile = new Tile(boardElement);
+
+console.log(gameBoard.emptyCells());
 
 
 
