@@ -4,7 +4,10 @@ export default class GameBoard {
         this.#cells = createCells(boardElement).map((cell, index) => {
             return new Cell(cell, index % 4, Math.floor(index / 4))
         })
-        console.log(this.#cells);
+    }
+
+    get cells() {
+        return this.#cells;
     }
 
     emptyCells() {
@@ -25,25 +28,30 @@ export default class GameBoard {
         return emptyCells[rand];
     }
 
-    moveTiles(direction) {
-        let min = 0;
-        let max = 3;
+    cellsByRow() {
+        return this.#cells.reduce((cellGrid, cell) => {
+            cellGrid[cell.y] = cellGrid[cell.y] || []
+            cellGrid[cell.y][cell.x] = cell
+            return cellGrid
+        }, [])
+    }
+    
+    cellsByColumn() {
+        return this.#cells.reduce((cellGrid, cell) => {
+            cellGrid[cell.x] = cellGrid[cell.x] || []
+            cellGrid[cell.x][cell.y] = cell
+            return cellGrid
+        }, [])
+    }
 
-        let fullCells = this.fullCells();
-    
-    
-        fullCells.forEach((cell) => {
-            let tile = cell.tile
+    moveRight() {
+        return this.moveTiles(this.cellsByColumn().toReversed())
+    }
 
-    
-            if (direction === "right" && tile.x < max) {
-                tile.x = tile.x + 1;
-            } else if (direction === "left" && tile.x > min) {
-                tile.x = tile.x - 1;
-            } else if (direction === "down"  && tile.y < max) {
-                tile.y = tile.y + 1;
-            } else if (direction === "up" && tile.y > min) {
-                tile.y = tile.y - 1;
+    moveTiles(cells) {
+        cells.map((row) => {
+            for (let index = 0; index < row.length; index++) {
+                
             }
         })
     }
@@ -69,6 +77,14 @@ class Cell {
 
     get tile() {
         return this.#tile;
+    }
+
+    get x() {
+        return this.#x;
+    }
+
+    get y() {
+        return this.#y;
     }
 }
 
