@@ -1,7 +1,25 @@
 console.log("Loaded");
 
-const tiles = document.querySelectorAll(".tile");
-console.log(tiles);
+class Tile {
+    x;
+    y;
+    element;
+
+    constructor() {
+        let newTile = document.createElement("div")
+        newTile.classList.toggle("tile");
+
+        this.element = newTile;
+        
+        this.x = Math.floor(Math.random() * 4);
+        this.y = Math.floor(Math.random() * 4);
+
+        newTile.textContent = "2";
+        
+        newTile.style.setProperty("--x", this.x)
+        newTile.style.setProperty("--y", this.y)
+    }
+}
 
 window.addEventListener("keydown", (event) => {
     switch (event.key) {
@@ -49,3 +67,13 @@ function moveTiles(direction) {
         }
     })
 }
+
+let newTile = new Tile();
+
+let gameBoard = document.querySelector(".gameBoard");
+gameBoard.appendChild(newTile.element)
+
+
+const tiles = document.querySelectorAll(".tile");
+console.log(tiles);
+
